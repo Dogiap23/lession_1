@@ -3,6 +3,13 @@
 //Khai bao bien var
 var fullName = 'Do Xuan Giap';
 var age = 21;
+//cac bien trong javascript
+//var, let, const
+//const được sử dụng để khai báo 1 hằng số, và giá trị của nó không thay đổi trong suốt chương trình.
+
+let khai báo biến chỉ có thể truy cập được trong block bao quanh nó được xác định bằng cặp {}.
+
+var khai báo biến có thể truy cập ở phạm vi hàm số hoặc bên ngoài hàm số, toàn cục.
 
 
 //Goi ham thong bao
@@ -567,6 +574,9 @@ Hamf (function) trong Javascript
 
 // console.log(result)
 
+// console.log(cong(2, 8))
+
+
 //----------------------------------------------------------------------------------------------------
 
 /* 
@@ -730,3 +740,78 @@ Các loại function
 
 //----------------------------------------------------------------------------------------------------
 
+/*
+    Array methods
+        forEach()
+        every()
+        some()
+        find()
+        filter()
+        map()
+        reduce()
+*/
+
+var courses = [
+    {
+        id: 1,
+        name: 'javascript',
+        coin: 250
+    },
+    {
+        id: 2,
+        name: 'HTML, CSS',
+        coin: 0
+    },
+    {
+        id: 3,
+        name: 'Rupy',
+        coin: 0
+    },
+    {
+        id: 4,
+        name: 'PHP',
+        coin: 400
+    },
+    {
+        id: 5,
+        name: 'ReactJS',
+        coin: 500
+    },
+    {
+        id: 6,
+        name: 'Rupy',
+        coin: 1000
+    },
+    {
+        id: 7,
+        name: 'Rupy',
+        coin: 100
+    }
+]
+
+// courses.forEach(function(course, index){
+//     console.log(index, course);
+// });
+
+
+// var isFree = courses.every(function(course, index){
+//     return course.coin === 0;
+// });
+// console.log(isFree);
+
+
+// var isFree = courses.some(function(course, index){
+//     return course.coin === 0;
+// });
+// console.log(isFree);
+
+
+// var course = courses.find(function(course, index){
+//     return course.name === 'Rupy';
+// });
+
+// console.log(course);
+function courseHandler(course){
+    console.log(course);
+}
+var newCourses = courses.map(courseHandler);
