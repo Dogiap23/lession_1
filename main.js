@@ -971,3 +971,4 @@ var newCourses = topics.reduce(function(courses, topic){
 },[])
 
 console.log(newCourses);
+
