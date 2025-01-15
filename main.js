@@ -740,6 +740,40 @@ Các loại function
 
 //----------------------------------------------------------------------------------------------------
 
+// do/while
+// var i = 0;
+
+// var isSuccess = false;
+
+// do{
+//     i++;
+
+//     console.log('Nap the lan ' + i);
+
+//     //thanh cong
+//     if(true){
+//         isSuccess = true;
+//     }
+
+// }while (!isSuccess && i <= 3);
+
+//----------------------------------------------------------------------------------------------------
+// break & continue in loop
+// for(var i = 0; i < 10; i++){
+
+//     if (i%2 !== 0) {
+//         continue
+//     }
+
+//     console.log(i);
+
+    // if (i >= 5) {
+    //     break;
+    // }
+// }
+
+//----------------------------------------------------------------------------------------------------
+
 /*
     Array methods
         forEach()
@@ -751,48 +785,43 @@ Các loại function
         reduce()
 */
 
-var courses = [
-    {
-        id: 1,
-        name: 'javascript',
-        coin: 250
-    },
-    {
-        id: 2,
-        name: 'HTML, CSS',
-        coin: 0
-    },
-    {
-        id: 3,
-        name: 'Rupy',
-        coin: 0
-    },
-    {
-        id: 4,
-        name: 'PHP',
-        coin: 400
-    },
-    {
-        id: 5,
-        name: 'ReactJS',
-        coin: 500
-    },
-    {
-        id: 6,
-        name: 'Rupy',
-        coin: 1000
-    },
-    {
-        id: 7,
-        name: 'Rupy',
-        coin: 100
-    }
-]
+// var courses = [
+//     {
+//         id: 1,
+//         name: 'Javascript',
+//         coin: 100
+//     },
+//     {
+//         id: 2,
+//         name: 'HTML, CSS',
+//         coin: 200
+//     },
+//     {
+//         id: 3,
+//         name: 'Rupy',
+//         coin: 220
+//     },
+//     {
+//         id: 4,
+//         name: 'PHP',
+//         coin: 200
+//     },
+//     {
+//         id: 5,
+//         name: 'ReactJS',
+//         coin: 480
+//     },
+// ]
+
+
+//forEach()----------------------
 
 // courses.forEach(function(course, index){
 //     console.log(index, course);
 // });
 
+
+//every()------------------------
 
 // var isFree = courses.every(function(course, index){
 //     return course.coin === 0;
@@ -800,18 +829,145 @@ var courses = [
 // console.log(isFree);
 
 
+//some()-------------------------
+
 // var isFree = courses.some(function(course, index){
 //     return course.coin === 0;
 // });
 // console.log(isFree);
 
 
+//find()--------------------------
+
 // var course = courses.find(function(course, index){
 //     return course.name === 'Rupy';
 // });
 
 // console.log(course);
-function courseHandler(course){
-    console.log(course);
-}
-var newCourses = courses.map(courseHandler);
+
+
+//filter()------------------------
+
+// var listCourse = courses.filter(function(course, index){
+//     return course.name === 'Rupy';
+// });
+
+// console.log(listCourse);
+
+
+//map()---------------------------
+
+// function courseHandler(course, index){
+//     // console.log(course);
+//     return {
+//         id: course.id,
+//         name: `Khoa hoc: ${course.name}`,
+//         coin: course.coin,
+//         coiinText: `Gia: ${course.coin}`,
+//         index: index,
+//     };
+// };
+
+// var newCourses = courses.map(courseHandler);
+
+// console.log(newCourses);
+
+//reduce()---------------------------
+
+
+//De hieu, ngan gon, hieu nang
+// var totaCoin = 0;
+
+// for (var course of courses) {
+//     totaCoin += course.coin;
+// }
+
+// console.log(totaCoin);
+
+// var i = 0;
+
+// function coinHandler(accumulator, currentValue, currentIndex, originArray){
+//     i++;
+
+//     var total = accumulator + currentValue.coin;
+
+//     console.table({
+//         'Luot chay: ': i,
+//         'Bien tich chu: ': accumulator,
+//         'Gia khoa hoa: ': currentValue.coin,
+//         'Tich tru duoc: ': total,
+//     });
+    
+//     return total;
+// }
+
+// var totaCoin = courses.reduce(coinHandler, 0);
+
+// console.log(totaCoin);
+
+// var i = 0;
+// var totaCoin = courses.reduce(function(total,course){
+//     i++;
+
+//     // console.log(i, total, course);
+
+//     return total + course.coin; 
+// },0);// intial value 
+
+// console.log(totaCoin)
+
+// var numbers = [100, 200, 220, 200, 480];
+
+// var totaCoin = numbers.reduce(function(total, number){
+//     return total + number;
+// },0)
+
+// console.log(totaCoin)
+
+//Bai tap---------------------------
+
+// Flat - "Lam phang" mang tu Depth array - "Mang sau"
+var depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9,]];
+
+var flatArray = depthArray.reduce(function(flatOutput, depthItem) {
+    return flatOutput.concat(depthItem);
+}, []);
+
+console.log(flatArray);
+
+// Lay ra casc khoa hoc dua vao 1 mang moi
+
+var topics = [
+    {
+        topic: "Font-end",
+        courses: [
+            {
+                id: 1,
+                title: "HTML, CSS"
+            },
+            {
+                id: 2,
+                title: "JavaScript"
+            }
+        ]
+    },
+    {
+        topic: "Back-end",
+        courses: [
+            {
+                id: 1,
+                title: "PHP"
+            },
+            {
+                id: 2,
+                title: "NodeJS"
+            }
+        ]
+    },
+];
+
+var newCourses = topics.reduce(function(courses, topic){
+    return courses.concat(topic.courses)
+},[])
+
+console.log(newCourses);
