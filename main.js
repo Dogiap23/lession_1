@@ -927,48 +927,215 @@ Các loại function
 //Bai tap---------------------------
 
 // Flat - "Lam phang" mang tu Depth array - "Mang sau"
-var depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9,]];
+// var depthArray = [1, 2, [3, 4], 5, 6, [7, 8, 9,]];
 
-var flatArray = depthArray.reduce(function(flatOutput, depthItem) {
-    return flatOutput.concat(depthItem);
-}, []);
+// var flatArray = depthArray.reduce(function(flatOutput, depthItem) {
+//     return flatOutput.concat(depthItem);
+// }, []);
 
-console.log(flatArray);
+// console.log(flatArray);
 
-// Lay ra casc khoa hoc dua vao 1 mang moi
+// // Lay ra casc khoa hoc dua vao 1 mang moi
 
-var topics = [
-    {
-        topic: "Font-end",
-        courses: [
-            {
-                id: 1,
-                title: "HTML, CSS"
-            },
-            {
-                id: 2,
-                title: "JavaScript"
-            }
-        ]
-    },
-    {
-        topic: "Back-end",
-        courses: [
-            {
-                id: 1,
-                title: "PHP"
-            },
-            {
-                id: 2,
-                title: "NodeJS"
-            }
-        ]
-    },
-];
+// var topics = [
+//     {
+//         topic: "Font-end",
+//         courses: [
+//             {
+//                 id: 1,
+//                 title: "HTML, CSS"
+//             },
+//             {
+//                 id: 2,
+//                 title: "JavaScript"
+//             }
+//         ]
+//     },
+//     {
+//         topic: "Back-end",
+//         courses: [
+//             {
+//                 id: 1,
+//                 title: "PHP"
+//             },
+//             {
+//                 id: 2,
+//                 title: "NodeJS"
+//             }
+//         ]
+//     },
+// ];
 
-var newCourses = topics.reduce(function(courses, topic){
-    return courses.concat(topic.courses)
-},[])
+// var newCourses = topics.reduce(function(courses, topic){
+//     return courses.concat(topic.courses)
+// },[])
 
-console.log(newCourses);
+// console.log(newCourses);
 
+
+// var htmls = newCourses.map(function(course){
+//     return `
+//       <div>
+//         <h2>${course.title}</h2>
+//         <p>ID: ${course.id}</p>
+//       </div>  
+//     `;
+// });
+
+// console.log(htmls)
+
+//---------------------------------------------------------
+
+//Phuong thuc includes method
+
+// console.log(Array.prototype.includes)
+
+// var title = 'Responsive web design';
+
+// console.log(title.includes('Responsive'));
+
+// var courses = [
+//     'Javascript',
+//     'PHP',
+//     'Dart'
+// ];
+// console.log(courses.includes('PHP'));
+
+//---------------------------------------------------------
+
+/**
+ * Math object
+ -Math.PI
+ -Math.round()
+ -Math.abs()
+ -Math.ceil()
+ -Math.floor()
+ -Math.random()
+ -Math.min()
+ -Math.max()
+ */
+
+//  console.log(Math.PI);//so PI
+
+//  console.log(Math.round(3.14));//Lam tron so
+
+//  console.log(Math.abs(-4));//Gia tri tuyet doi
+
+//  console.log(Math.ceil(4.1))//Lam tron tren
+
+//  console.log(Math.floor(4.999))//Lam tron duoi
+
+//  console.log(Math.random());//Tra ve day so thap phan nho hon 1 ngau nhien
+
+//  //VD: 
+//  console.log(Math.floor(Math.random() * 100));
+
+// var random = Math.floor(Math.random() * 5);
+
+// var bonus = [
+//     '10 coin',
+//     '20 coin',
+//     '30 coin',
+//     '40 coin',
+//     '50 coin',
+// ]
+
+// console.log(bonus[random]);
+
+// var random = Math.floor(Math.random() * 100);
+
+// if (random < 50) {
+//     console.log('cuong hoa thanh cong')
+// }
+
+// console.log(Math.min());
+
+// console.log(Math.max());
+
+//---------------------------------------------------------
+//callback? 
+//- La ham (function) dc truyen qua doi so khi gọi hàm khác
+//- Duoc goi lai (trong ham nhan doi so)
+
+// function myFunction(param){
+//     param('Hoc lap trinh');
+// };
+
+// function myCallback(value){
+//     console.log('Value: ', value);
+// }
+
+// // myCallback(123);
+// myFunction(myCallback);
+
+// Array.prototype.map2 = function(callback) {
+//     var arrayLength = this.length;
+
+//     for (var i = 0; i < arrayLength; ++i) {
+//         callback(this[i], i);
+//     }
+// }
+
+// var courses = [
+//     'Javascript',
+//     'PHP',
+//     'RUby'
+// ];
+
+// courses.map2(function(course, index){
+//     // console.log(index, course);
+//     return `<h2>${course}</h2>`
+// });
+ 
+// var htmls = courses.map(function(course){
+//     return `<h2>${course}</h2>`;
+// });
+
+// console.log(htmls.join(''));
+
+// courses.map(function(course){
+//     console.log(course)
+// })
+
+//-----------------------------------------------------------------
+
+// var courses = [
+//     'Javascript',
+//     'PHP',
+// ];
+// //Khong bo qua truong hop nao
+// // for (var i = 0; i < courses.length; ++i) {
+// //     console.log(courses[i]);
+// // }
+
+// //bo qua cac truong hop khong co gia tri
+// for (var index in courses) {
+//     console.log(courses[index]);
+// }
+
+//--------------------------------------------------
+//Xay dung phuong thuc forEach
+
+Array.prototype.forEach2 = function(callback) {
+    for (var index in this) {
+        console.log('index: ', index)
+    }
+}
+
+var courses = [
+        'Javascript',
+        'PHP',
+        'Ruby'
+    ];
+
+// courses.length = 1000;
+
+console.log(courses);
+
+// courses.forEach(function(course, index, array){
+//     console.log(course, index, array);
+// });
+
+courses.forEach2(function(course, index, array){
+    console.log(course, index, array);
+});
