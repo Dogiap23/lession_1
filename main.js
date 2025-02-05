@@ -9,6 +9,9 @@ var age = 21;
 
 let khai báo biến chỉ có thể truy cập được trong block bao quanh nó được xác định bằng cặp {}.
 
+hoisting?
+tham trị, tham chiếu?
+
 var khai báo biến có thể truy cập ở phạm vi hàm số hoặc bên ngoài hàm số, toàn cục.
 
 
@@ -107,9 +110,9 @@ console.log(fullName);
 /**Toan tu so sanh 
 
     // var a = 1;
-    // var b = 2;
+    // var b = 1;
 
-    // if (a==b) {
+    // if (a===b) {
     //     console.log('Dieu kien dung!')
     // }else{
     //     console.log('Dieu kien sai!')
@@ -131,7 +134,7 @@ console.log(fullName);
 /**Boolean 
 
 var a = 1;
-var b = 2;
+var b = "1";
 
 var isSuccess = a > b;
 
@@ -161,19 +164,19 @@ if (fullName) {
  * 1. AND (&&)
  * 2. OR (||)
  * 3. NOT (!)
- 
+ * 
 
-var a = 1;
+var a = null;
 var b = 2;
 var c = 3;
 
-// if (a > 0 && b > 0 && c > 0) {
+// if (a > 0 || b > 0 || c > 0) {
 //     console.log('Dieu kien dung!')
 // } else {
 //     console.log('Dieu kien sai!')
 // }
 
-if (!(a < 0)) {
+if (a) {
     console.log('Dieu kien dung!')
 } else {
     console.log('Dieu kien sai!')
@@ -196,6 +199,8 @@ Kieu du lieu trong Javascript
 2. Du lieu phuc tap - Complex Data
     - Function
     - Object
+
+    truesy - falsy(false, null, undefined, 0 , [],...)
 
 
 //Number type
@@ -246,6 +251,17 @@ var myObject = {
 
 console.log('myObject', myObject);
 
+var pen = {
+name: "thien long",
+nsx: "",
+gia: 10000,
+viet: () => {
+    console.log("pen thien long");
+    }
+}
+
+pen.viet()
+
 // Array
 
 var myArray = [
@@ -254,6 +270,7 @@ var myArray = [
     'Ha Noi',
 ];
 
+a = [1,2,3,4,5])
 console.log(myArray)
 */
 
@@ -1116,26 +1133,164 @@ Các loại function
 //--------------------------------------------------
 //Xay dung phuong thuc forEach
 
-Array.prototype.forEach2 = function(callback) {
-    for (var index in this) {
-        console.log('index: ', index)
-    }
-}
+// Array.prototype.forEach2 = function(callback) {
+//     for (var index in this) {
+//         console.log('index: ', index)
+//     }
+// }
 
-var courses = [
-        'Javascript',
-        'PHP',
-        'Ruby'
-    ];
+// var courses = [
+//         'Javascript',
+//         'PHP',
+//         'Ruby'
+//     ];
 
-// courses.length = 1000;
+// // courses.length = 1000;
 
-console.log(courses);
+// console.log(courses);
 
-// courses.forEach(function(course, index, array){
+// // courses.forEach(function(course, index, array){
+// // //     console.log(course, index, array);
+// // });
+
+// courses.forEach2(function(course, index, array){
+//     console.log(course, index, array);
+// });  
+
+//--------------------------------------------------
+//Xay dung phuong thuc filter: Loc ra cac phan tu thoa man dieu kien
+
+// Array.prototype.filter2 = function(callback){
+//     for (var index in this) {
+//         if (this.hasOwnProperty(index)) {
+//             callback(this[index], index, this);
+//         }
+//     }
+// }
+
+// var courses = [
+//     {
+//         name: 'Javascript',
+//         coin: 680
+//     },
+//     {
+//         name: 'PHP',
+//         coin: 860
+//     },
+//     {
+//         name: 'Ruby',
+//         coin: 980
+//     }
+// ];
+
+// // var filterCourses = courses.filter(function(course, index, array){
+// //     return course.coin > 700;
+// // });
+
+// var filterCourses = courses.filter2(function(course, index, array){
 //     console.log(course, index, array);
 // });
 
-courses.forEach2(function(course, index, array){
-    console.log(course, index, array);
-});
+// console.log(filterCourses);
+
+//--------------------------------------------------
+//Xay dung phuong thuc some: Tim ra toi thieu 1 phan tu co thoa man dieu kien trong mang
+
+// Array.prototype.some2 = function(callback){
+//     var output = false;
+
+//     for (var index in this) {
+//         if (this.hasOwnProperty(index)) {
+//             if(callback(this[index], index, this)){
+//                 output = true;
+//                 break;
+//             };
+//         }
+//     }
+//     return output;
+// }
+
+// var courses = [
+//     {
+//         name: 'Javascript',
+//         coin: 680,
+//         isFinish: true,
+//     },
+//     {
+//         name: 'PHP',
+//         coin: 860,
+//         isFinish: false,
+//     },
+//     {
+//         name: 'Ruby',
+//         coin: 980,
+//         isFinish: false,
+//     }
+// ];
+
+// // var result = courses.some(function(course, index, array){
+// //     return course.isFinish;
+// // });
+
+// var result = courses.some2(function(course, index, array){
+//     return course.isFinish;
+// });
+
+// console.log(result);
+
+//--------------------------------------------------
+//Xay dung phuong thuc every: 
+
+// Array.prototype.every2 = function(callback){
+//     var output = true;
+
+//     for (var index in this) {
+//         if (this.hasOwnProperty(index)) {
+//             var result = callback(this[index], index, this);
+//             if (!result){
+//                 output = false;
+//                 break;
+//             }
+//         }
+//     }
+//     return output;
+// }
+
+// var courses = [
+//     {
+//         name: 'Javascript',
+//         coin: 680,
+//         isFinish: true,
+//     },
+//     {
+//         name: 'PHP',
+//         coin: 860,
+//         isFinish: true,
+//     },
+//     {
+//         name: 'Ruby',
+//         coin: 980,
+//         isFinish: false,
+//     }
+// ];
+
+// // var result = courses.every(function(course, index, array){
+// //     return course.isFinish;
+// // });
+
+// var result = courses.every2(function(course, index, array){
+//     // return course.isFinish;
+//     return course.coin > 500;
+// });
+
+// console.log(result);
+
+//--------------------------------------------------------------------------------
+
+//Giới thiệu đệ quy 
+
+// function deQuy(){
+//     deQuy();
+// }
+
+// deQuy();
